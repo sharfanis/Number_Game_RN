@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Button, Image } from "react-native";
 import colors from "../constants/colors";
 import BodyText from "../components/BodyText";
 import constants from '../constants/colors';
+import MainButton from '../components/MainButton';
 
 const GameOverScreen = (props) => {
   return (
@@ -16,16 +17,19 @@ const GameOverScreen = (props) => {
              fadeDuration={1000}
       />
       </View>
-      <BodyText>It took you total of {props.rounds} rounds :)</BodyText>
-      <BodyText>Number was: {props.userNumber}</BodyText>
-      <View style={styles.newGameBtn}>
-        <Button
-          color="white"
-          title="ANOTHER GAME BABE"
+      {/* In general the styles are not passed down to the nested child elements , but the only excepttion
+      in RN is for text , the parent Text element( BodyText) will drill down the all the styles to the child text elements too
+      so any font color or font size change on the Body text will also reflect on the child elements. */}
+      <BodyText>
+        It took you total of <Text style ={styles.highlight}>{props.rounds}</Text> rounds :)
+        Number was: <Text style ={styles.highlight}>{props.userNumber}</Text>
+      </BodyText>
+      {/* <View style={styles.newGameBtn}> */}
+        <MainButton style={styles.newGameBtn}
           onPress={props.onRestart}
-        />
+        >ANOTHER GAME BABE</MainButton>
       </View>
-    </View>
+    // </View>
   );
 };
 
@@ -49,7 +53,11 @@ const styles = StyleSheet.create({
     height: 300,
     overflow: 'hidden'
   },
-  screen: {
+   highlight:{
+    color: colors.primary,
+    textAlign: 'center'
+  },
+    screen: {
     flex: 1,
     padding: 10,
     justifyContent: "center",
@@ -57,9 +65,9 @@ const styles = StyleSheet.create({
   },
   newGameBtn: {
     marginTop: 20,
-    borderRadius: 8,
-    backgroundColor: colors.fbColor,
-    height: 40,
-    width: 260,
+    // borderRadius: 8,
+    // backgroundColor: colors.fbColor,
+    // height: 40,
+    // width: 260,
   },
 });

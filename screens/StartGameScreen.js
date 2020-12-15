@@ -12,6 +12,7 @@ import Card from "../SharedComponent/Card";
 import colors from "../constants/colors";
 import Input from "../SharedComponent/Input";
 import NumberContainer from "../SharedComponent/NumberContainer";
+import BodyText from "../components/BodyText";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -55,7 +56,7 @@ const StartGameScreen = (props) => {
     //  console.log('selected no', selectedNumber);
     confirmedOutput = (
       <Card style={styles.confirmedNumberContainer}>
-        <Text style={styles.textFont}>Chosen No:</Text>
+        <BodyText>Chosen No:</BodyText>
         <NumberContainer>{selectedNumber}</NumberContainer>
         <View style={styles.textFont}>
           <Button title="START GAME" onPress ={() => props.onStartGame(selectedNumber)} />
@@ -67,9 +68,9 @@ const StartGameScreen = (props) => {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.screen}>
-        <Text style={styles.title}>Start a New Game</Text>
+        <BodyText style={{color: 'black', fontSize: 30, marginVertical: 20}}>Start a New Game</BodyText>
         <Card style={styles.inputContainer}>
-          <Text>Select a Number</Text>
+          <BodyText>Select a Number</BodyText>
 
           <Input
             style={styles.inputStyle}

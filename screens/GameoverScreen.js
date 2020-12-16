@@ -27,7 +27,7 @@ const GameOverScreen = (props) => {
       {/* <View style={styles.newGameBtn}> */}
         <MainButton style={styles.newGameBtn}
           onPress={props.onRestart}
-        >ANOTHER GAME BABE</MainButton>
+        >ANOTHER GAME BABE ?</MainButton>
       </View>
     // </View>
   );

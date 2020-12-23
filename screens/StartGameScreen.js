@@ -14,6 +14,7 @@ import Input from "../SharedComponent/Input";
 import NumberContainer from "../SharedComponent/NumberContainer";
 import BodyText from "../components/BodyText";
 import MainButton from "../components/MainButton";
+import Colors from '../constants/colors';
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -88,18 +89,14 @@ const StartGameScreen = (props) => {
 
           <View style={styles.buttonStyleContainer}>
             <View style={styles.buttonStyle}>
-              <Button
-                color={colors.accent}
-                title="RESET"
+              <MainButton
                 onPress={resetInput}
-              />
+              >RESET</MainButton>
             </View>
             <View style={styles.buttonStyle}>
-              <Button
-                color={colors.accent}
-                title="CONFIRM"
+              <MainButton
                 onPress={confirmInputHandler}
-              />
+              >CONFIRM</MainButton>
             </View>
           </View>
         </Card>
@@ -128,16 +125,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: colors.primary,
     borderColor: "yellow",
-    height: 40,
-    width: 100,
+    height: 50,
+    justifyContent:'space-between',
   },
   title: {
     fontSize: 20,
     marginVertical: 10,
   },
   inputContainer: {
-    width: 300,
-    maxWidth: "80%",
+    width: '80%',
+    maxWidth: '95%',
+    minWidth: 300,
     alignItems: "center",
   },
   inputStyle: {
@@ -154,6 +152,6 @@ const styles = StyleSheet.create({
   },
   textFont: {
     color: "blue",
-    fontFamily: "ArialHebrew-Bold",
+    fontFamily: "open-sans-bold",
   },
 });

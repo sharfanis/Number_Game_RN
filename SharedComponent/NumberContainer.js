@@ -17,6 +17,6 @@ export default numberContainer;
 const styles = StyleSheet.create({
   textFont: {
     color: "blue",
-    fontFamily: "ArialHebrew-Bold",
+    fontFamily: "open-sans-bold",
   },
 });

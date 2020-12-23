@@ -38,7 +38,7 @@ export default GameOverScreen;
 const styles = StyleSheet.create({
   textFont: {
     color: "blue",
-    fontFamily: "ArialHebrew-Bold",
+    fontFamily: "open-sans-bold",
   },
   image: {
     width: '100%',

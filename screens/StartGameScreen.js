@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
+  TouchableOpacity,
 } from "react-native";
 import Card from "../SharedComponent/Card";
 import colors from "../constants/colors";
@@ -14,7 +15,7 @@ import Input from "../SharedComponent/Input";
 import NumberContainer from "../SharedComponent/NumberContainer";
 import BodyText from "../components/BodyText";
 import MainButton from "../components/MainButton";
-import Colors from '../constants/colors';
+import Colors from "../constants/colors";
 
 const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
@@ -62,7 +63,9 @@ const StartGameScreen = (props) => {
         <NumberContainer>{selectedNumber}</NumberContainer>
         <View style={styles.textFont}>
           {/* <Button title="START GAME" onPress ={() => props.onStartGame(selectedNumber)} /> */}
-          <MainButton onPress ={() => props.onStartGame(selectedNumber)}>START GAME</MainButton>
+          <MainButton onPress={() => props.onStartGame(selectedNumber)}>
+            START GAME
+          </MainButton>
         </View>
       </Card>
     );
@@ -71,7 +74,9 @@ const StartGameScreen = (props) => {
   return (
     <TouchableWithoutFeedback onPress={dismissKeyboard}>
       <View style={styles.screen}>
-        <BodyText style={{color: 'black', fontSize: 30, marginVertical: 20}}>Start a New Game</BodyText>
+        <BodyText style={{ color: "black", fontSize: 30, marginVertical: 20 }}>
+          Start a New Game
+        </BodyText>
         <Card style={styles.inputContainer}>
           <BodyText>Select a Number</BodyText>
 
@@ -89,14 +94,10 @@ const StartGameScreen = (props) => {
 
           <View style={styles.buttonStyleContainer}>
             <View style={styles.buttonStyle}>
-              <MainButton
-                onPress={resetInput}
-              >RESET</MainButton>
+              <MainButton onPress={resetInput}>RESET</MainButton>
             </View>
             <View style={styles.buttonStyle}>
-              <MainButton
-                onPress={confirmInputHandler}
-              >CONFIRM</MainButton>
+              <MainButton onPress={confirmInputHandler}>CONFIRM</MainButton>
             </View>
           </View>
         </Card>
@@ -126,15 +127,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     borderColor: "yellow",
     height: 50,
-    justifyContent:'space-between',
+    justifyContent: "space-between",
   },
   title: {
     fontSize: 20,
     marginVertical: 10,
   },
   inputContainer: {
-    width: '80%',
-    maxWidth: '95%',
+    width: "80%",
+    maxWidth: "95%",
     minWidth: 300,
     alignItems: "center",
   },

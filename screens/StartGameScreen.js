@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
-  TouchableOpacity,
+  Dimensions
 } from "react-native";
 import Card from "../SharedComponent/Card";
 import colors from "../constants/colors";
@@ -94,10 +94,16 @@ const StartGameScreen = (props) => {
 
           <View style={styles.buttonStyleContainer}>
             <View style={styles.buttonStyle}>
-              <MainButton onPress={resetInput}>RESET</MainButton>
+              <Button title="Reset"
+               onPress={resetInput}
+               color={Colors.acccent2}
+               />
             </View>
             <View style={styles.buttonStyle}>
-              <MainButton onPress={confirmInputHandler}>CONFIRM</MainButton>
+              <Button title="Confirm" 
+                     onPress={confirmInputHandler}
+                     color={Colors.primary}
+                     />
             </View>
           </View>
         </Card>
@@ -123,11 +129,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   buttonStyle: {
-    borderRadius: 8,
-    backgroundColor: colors.primary,
-    borderColor: "yellow",
-    height: 50,
-    justifyContent: "space-between",
+     width: Dimensions.get('window').width / 4,
+     //borderRadius: 8,
+    //  backgroundColor: colors.primary,
+    // // borderColor: "yellow",
+    //  height: 40,
+    //  justifyContent: "space-evenly",
   },
   title: {
     fontSize: 20,

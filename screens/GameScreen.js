@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, Text, StyleSheet, Alert, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Alert, ScrollView, Dimensions} from "react-native";
 import NumberContainer from "../SharedComponent/NumberContainer";
 import Card from "../SharedComponent/Card";
 import MainButton from "../components/MainButton";
@@ -71,6 +71,12 @@ const GameScreen = (props) => {
     setPastGuesses((currentPastGuesses) => [nextNumber, ...currentPastGuesses]);
   };
 
+  let listContainerReal = styles.listContainer;
+
+  if(Dimensions.get('window').width > 350) {
+    listContainerReal = styles.listContainerBig;
+  }
+
   return (
     <View style={styles.screen}>
       <Text>Opponent's Guess</Text>
@@ -89,7 +95,8 @@ const GameScreen = (props) => {
           <Ionicons name="md-add" size={24} color="white" />
         </MainButton>
       </Card>
-      <View style={styles.listContainer}>
+      {/* Logic for listContainer is mentioned above , it's conditional for different devices. */}
+      <View style={listContainerReal}>
         <ScrollView contentContainerStyle={styles.listVal} >
           {pastGuesses.map((guess, index) =>
             renderListItem(guess, pastGuesses.length - index)
@@ -111,7 +118,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height > 600 ? 20 : 10,
     width: 300,
     maxWidth: "80%",
   },
@@ -126,7 +133,12 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
-    width: '70%',
+    //width: Dimensions.get('window').width < 350 ? '60%' : '80%',
+    width: '60%'
+  },
+  listContainerBig : {
+    flex: 1,
+    width: '80%'
   },
   listVal: {
      flexGrow: 1,

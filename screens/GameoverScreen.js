@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Image } from "react-native";
+import { View, Text, StyleSheet, Button, Image , Dimensions ,ScrollView } from "react-native";
 import colors from "../constants/colors";
 import BodyText from "../components/BodyText";
 import constants from '../constants/colors';
@@ -7,6 +7,7 @@ import MainButton from '../components/MainButton';
 
 const GameOverScreen = (props) => {
   return (
+    <ScrollView>
     <View style={styles.screen}>
       <BodyText>The Game is Over! </BodyText>
       <View style={styles.imageContainer}>
@@ -24,12 +25,13 @@ const GameOverScreen = (props) => {
         It took you total of <Text style ={styles.highlight}>{props.rounds}</Text> rounds :)
         Number was: <Text style ={styles.highlight}>{props.userNumber}</Text>
       </BodyText>
-      {/* <View style={styles.newGameBtn}> */}
-        <MainButton style={styles.newGameBtn}
+      <View style={styles.newGameBtn}>
+        <MainButton
           onPress={props.onRestart}
         >ANOTHER GAME BABE ?</MainButton>
       </View>
-    // </View>
+     </View>
+     </ScrollView>
   );
 };
 
@@ -41,16 +43,16 @@ const styles = StyleSheet.create({
     fontFamily: "open-sans-bold",
   },
   image: {
-    width: '100%',
-    height: '100%',
+    width: Dimensions.get('window').width > 500 ? '100%' : '100%',
+    height: Dimensions.get('window').height > 600 ? '100%' : '100%',
   },
   imageContainer: {
-    marginVertical: 30,
-    borderRadius: 200,
+    marginVertical: Dimensions.get('window').height / 20,
+    borderRadius: Dimensions.get('window').width * 0.7 / 2,
     borderWidth: 3,
     borderColor: 'black',
-    width: '80%',
-    height: 300,
+    width: Dimensions.get('window').height > 500 ? 300 : 200,
+    height: Dimensions.get('window').height > 500 ? 300 : 200,
     overflow: 'hidden'
   },
    highlight:{
@@ -64,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   newGameBtn: {
-    marginTop: 20,
+   marginTop : Dimensions.get('window').height * 0.7 / 14 ,
     // borderRadius: 8,
     // backgroundColor: colors.fbColor,
     // height: 40,

@@ -7,7 +7,9 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   Alert,
-  Dimensions
+  Dimensions,
+  ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import Card from "../SharedComponent/Card";
 import colors from "../constants/colors";
@@ -72,44 +74,52 @@ const StartGameScreen = (props) => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={dismissKeyboard}>
-      <View style={styles.screen}>
-        <BodyText style={{ color: "black", fontSize: 30, marginVertical: 20 }}>
-          Start a New Game
-        </BodyText>
-        <Card style={styles.inputContainer}>
-          <BodyText>Select a Number</BodyText>
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={30}>
+        <TouchableWithoutFeedback onPress={dismissKeyboard}>
+          <View style={styles.screen}>
+            <BodyText
+              style={{ color: "black", fontSize: 30, marginVertical: 20 }}
+            >
+              Start a New Game
+            </BodyText>
+            <Card style={styles.inputContainer}>
+              <BodyText>Select a Number</BodyText>
 
-          <Input
-            style={styles.inputStyle}
-            blurOnSubmit
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardAppearance="dark"
-            keyboardType="number-pad"
-            maxLength={2}
-            onChangeText={numberInputHandler}
-            value={enteredValue}
-          />
+              <Input
+                style={styles.inputStyle}
+                blurOnSubmit
+                autoCapitalize="none"
+                autoCorrect={false}
+                keyboardAppearance="dark"
+                keyboardType="number-pad"
+                maxLength={2}
+                onChangeText={numberInputHandler}
+                value={enteredValue}
+              />
 
-          <View style={styles.buttonStyleContainer}>
-            <View style={styles.buttonStyle}>
-              <Button title="Reset"
-               onPress={resetInput}
-               color={Colors.acccent2}
-               />
-            </View>
-            <View style={styles.buttonStyle}>
-              <Button title="Confirm" 
-                     onPress={confirmInputHandler}
-                     color={Colors.primary}
-                     />
-            </View>
+              <View style={styles.buttonStyleContainer}>
+                <View style={styles.buttonStyle}>
+                  <Button
+                    title="Reset"
+                    onPress={resetInput}
+                    color={Colors.acccent2}
+                  />
+                </View>
+                <View style={styles.buttonStyle}>
+                  <Button
+                    title="Confirm"
+                    onPress={confirmInputHandler}
+                    color={Colors.primary}
+                  />
+                </View>
+              </View>
+            </Card>
+            {confirmedOutput}
           </View>
-        </Card>
-        {confirmedOutput}
-      </View>
-    </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
@@ -129,8 +139,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   buttonStyle: {
-     width: Dimensions.get('window').width / 4,
-     //borderRadius: 8,
+    width: Dimensions.get("window").width / 4,
+    //borderRadius: 8,
     //  backgroundColor: colors.primary,
     // // borderColor: "yellow",
     //  height: 40,

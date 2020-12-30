@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import {
   View,
   Text,
@@ -25,14 +25,7 @@ const StartGameScreen = (props) => {
   const [selectedNumber, setSelectedNumber] = useState();
   const [buttonWidth , setButtonWidth] = useState(Dimensions.get('window').width / 4);
 
-  const updateLayout = () => {
-    setButtonWidth(Dimensions.get('window').width / 4);
-  }
-  //ADD a listenner
-  
-  Dimensions.addEventListener('change' , updateLayout);
-
-  const numberInputHandler = (inputText) => {
+ const numberInputHandler = (inputText) => {
     // setEnteredValue((parseInt(inputtext)).replace(/[^0-9]/g, ''));
     // console.log('the input text', inputText.toString().replace(/[^0-9]/g, ''));
     setEnteredValue(inputText);
@@ -46,6 +39,21 @@ const StartGameScreen = (props) => {
     setEnteredValue("");
     setConfirmedValue(false);
   };
+
+  // To have only one event listener , because there is always a new listener when orientation changes we can use useEffect.
+
+  useEffect(() => {
+    const updateLayout = () => {
+      setButtonWidth(Dimensions.get('window').width / 4);
+    }
+    //ADD a listenner
+    Dimensions.addEventListener('change' , updateLayout);
+
+    return () => {
+     Dimensions.removeEventListener('change' , updateLayout);
+    
+    }
+  });
 
   const confirmInputHandler = () => {
     //console.log('the ent ', enteredValue);

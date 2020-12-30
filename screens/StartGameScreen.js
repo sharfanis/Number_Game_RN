@@ -23,6 +23,14 @@ const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [confirmed, setConfirmedValue] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
+  const [buttonWidth , setButtonWidth] = useState(Dimensions.get('window').width / 4);
+
+  const updateLayout = () => {
+    setButtonWidth(Dimensions.get('window').width / 4);
+  }
+  //ADD a listenner
+  
+  Dimensions.addEventListener('change' , updateLayout);
 
   const numberInputHandler = (inputText) => {
     // setEnteredValue((parseInt(inputtext)).replace(/[^0-9]/g, ''));
@@ -99,14 +107,14 @@ const StartGameScreen = (props) => {
               />
 
               <View style={styles.buttonStyleContainer}>
-                <View style={styles.buttonStyle}>
+                <View style={{width: buttonWidth}}>
                   <Button
                     title="Reset"
                     onPress={resetInput}
                     color={Colors.acccent2}
                   />
                 </View>
-                <View style={styles.buttonStyle}>
+                <View style={{width: buttonWidth}}>
                   <Button
                     title="Confirm"
                     onPress={confirmInputHandler}
@@ -139,12 +147,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   buttonStyle: {
-    width: Dimensions.get("window").width / 4,
-    //borderRadius: 8,
-    //  backgroundColor: colors.primary,
-    // // borderColor: "yellow",
-    //  height: 40,
-    //  justifyContent: "space-evenly",
+    // Since its only width for these styles , use the above logic of updateWidth so that the code changes 
+    // the width of buttons everytime the orientation changes.
+     //width: Dimensions.get("window").width / 4,
   },
   title: {
     fontSize: 20,

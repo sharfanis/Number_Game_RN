@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     width: 70,
-    textAlign: "center",
+    textAlign: "center", 
   },
   confirmedNumberContainer: {
     width: 250,

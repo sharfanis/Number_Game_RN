@@ -105,11 +105,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  newGameBtn: {
-    // marginTop: (availableDeviceHeight * 0.7) / 14,
-    // borderRadius: 8,
-    // backgroundColor: colors.fbColor,
-    // height: 40,
-    // width: 260,
-  },
+  // newGameBtn: {
+  //   // marginTop: (availableDeviceHeight * 0.7) / 14,
+  //   // borderRadius: 8,
+  //   // backgroundColor: colors.fbColor,
+  //   // height: 40,
+  //   // width: 260,
+  // },
 });

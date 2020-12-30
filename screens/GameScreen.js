@@ -80,7 +80,8 @@ const GameScreen = (props) => {
       Alert.alert("Don't Lie Babe!!", "You know this is wrong", {
         text: "Sorry",
         style: "destructive",
-      });
+        onPress: () => console.log("OK Pressed")
+      } , { cancelable: true });
       return;
     }
     if (direction === "lower") {

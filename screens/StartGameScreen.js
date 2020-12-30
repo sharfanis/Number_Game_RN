@@ -62,7 +62,7 @@ const StartGameScreen = (props) => {
       //Add an alert
       Alert.alert("Invalid Number Detected", "Number has to between 1 and 99", [
         { text: "Dismiss", style: "destructive", onPress: resetInput },
-      ]);
+      ], { cancelable: true });
       return;
     }
     setConfirmedValue(true);
